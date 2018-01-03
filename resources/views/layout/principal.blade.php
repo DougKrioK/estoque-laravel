@@ -15,6 +15,22 @@
     </div>
 
       <ul class="nav navbar-nav navbar-right">
+        @if (Auth::guest())
+          <li><a href="/auth/login">Login</a></li>
+          <li><a href="/auth/register">Register</a></li>
+        @else
+          
+          <li>
+            <a href="{{ route('logout') }}" 
+              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+          </li>
+          
+        @endif
         <li><a href="{{action('ProdutoController@lista')}}">Listagem</a></li>
         <li><a href="{{action('ProdutoController@novo')}}">Novo</a></li>
       </ul>

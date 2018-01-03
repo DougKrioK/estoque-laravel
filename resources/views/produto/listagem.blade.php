@@ -18,7 +18,9 @@
     <td>{{ $p->valor }}</td>
     <td>{{ $p->descricao }}</td>
     <td>{{ $p->quantidade }}</td>
-    <td><a href="/produtos/mostra/{{ $p->id }}">Visualizar</a></td>
+    <td>{{ $p->tamanho }}</td>
+    <td><a href="{{action('ProdutoController@mostra', $p->id)}}">Visualizar</a></td>
+    <td><a href="{{action('ProdutoController@remove', $p->id)}}">Remover</a></td>
   </tr>
   @endforeach
 </table>

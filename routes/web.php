@@ -10,13 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
 
-Route::get('/', 'ProdutoController@lista');
+Auth::routes();
+
+Route::get('/lista', 'ProdutoController@lista');
 Route::get('/produtos/mostra/{id}', 'ProdutoController@mostra')->where('id', '[0-9]+'); // estou dizendo no where, que somente faz a roda se o id for numero
 Route::get('/produtos/novo', 'ProdutoController@novo');
 Route::post('/produtos/adiciona', 'ProdutoController@adiciona');
+Route::post('/produtos/altera/{id}', 'ProdutoController@altera');
+Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
+
+Route::get('/', 'HomeController@index')->name('home');
